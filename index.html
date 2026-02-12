@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecycleRight - Turning Waste into Worth</title>
+    <meta name="description"
+        content="Recycle Right. Save Tomorrow. The app that helps you recycle correctly and track your impact.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=">
+    <!-- Placeholder Favicon -->
+</head>
+
+<body>
+
+    <!-- Sticky Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">RecycleRight<span class="dot">.</span></a>
+            <ul class="nav-links">
+                <li><a href="#hero">Start</a></li>
+                <li><a href="#materials">Guide</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#search">Search</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Feature 1: Impact-Driven Recycling Awareness Section (Hero) -->
+    <header id="hero" class="hero-section">
+        <div class="container hero-content">
+            <h1 class="fade-in">Recycle Right.<br>Save Tomorrow.</h1>
+            <p class="fade-in-delay">Small daily actions can protect our planet. Recycling isn't just about waste; it's
+                about our future economy and environment.</p>
+
+            <div class="impact-cards-container fade-in-delay-2">
+                <div class="impact-card">
+                    <span class="impact-icon">🌳</span>
+                    <h3>Trees Saved</h3>
+                </div>
+                <div class="impact-card">
+                    <span class="impact-icon">💧</span>
+                    <h3>Water Protected</h3>
+                </div>
+                <!-- Mobile only shows 2-3 initially to keep it light, extended in Feature 5 -->
+                <div class="impact-card mobile-hide">
+                    <span class="impact-icon">⚡</span>
+                    <h3>Energy Conserved</h3>
+                </div>
+            </div>
+
+            <a href="#materials" class="cta-button pulse-animation">Start Recycling Today</a>
+        </div>
+        <div class="hero-bg-overlay"></div>
+    </header>
+
+    <!-- Feature 2: Smart Recyclable Materials Guide -->
+    <section id="materials" class="materials-section">
+        <div class="container">
+            <h2 class="section-title">Know Your Waste</h2>
+            <p class="section-subtitle">Tap to explore categories</p>
+
+            <div class="accordion">
+                <!-- Paper & Cardboard -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="icon">📦</span> Paper & Cardboard
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="material-details">
+                            <div class="good-bad">
+                                <div class="good">
+                                    <h4><span class="tick">✔</span> Recycle</h4>
+                                    <ul>
+                                        <li>Newspapers, Magazines</li>
+                                        <li>Cardboard Boxes (flattened)</li>
+                                        <li>Office Paper</li>
+                                    </ul>
+                                </div>
+                                <div class="bad">
+                                    <h4><span class="cross">✘</span> Trash</h4>
+                                    <ul>
+                                        <li>Greasy Pizza Boxes</li>
+                                        <li>Used Tissues/Napkins</li>
+                                        <li>Wax-coated cups</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="clean-tip"><strong>Prep:</strong> Remove tape and flatten boxes. Keep paper dry.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plastics -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="icon">🧴</span> Plastics
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="material-details">
+                            <div class="good-bad">
+                                <div class="good">
+                                    <h4><span class="tick">✔</span> Recycle</h4>
+                                    <ul>
+                                        <li>Bottles (Water, Soda)</li>
+                                        <li>Milk Jugs</li>
+                                        <li>Shampoo Bottles</li>
+                                    </ul>
+                                </div>
+                                <div class="bad">
+                                    <h4><span class="cross">✘</span> Trash</h4>
+                                    <ul>
+                                        <li>Plastic Bags (grocery)</li>
+                                        <li>Straws & Cutlery</li>
+                                        <li>Styrofoam</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="clean-tip"><strong>Prep:</strong> Rinse out residue. Crush to save space. Check
+                                the number code (1 & 2 are best).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glass & Metals -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="icon">🍾</span> Glass & Metals
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="material-details">
+                            <div class="good-bad">
+                                <div class="good">
+                                    <h4><span class="tick">✔</span> Recycle</h4>
+                                    <ul>
+                                        <li>Glass Jars & Bottles</li>
+                                        <li>Aluminum Cans</li>
+                                        <li>Steel Food Cans</li>
+                                    </ul>
+                                </div>
+                                <div class="bad">
+                                    <h4><span class="cross">✘</span> Trash</h4>
+                                    <ul>
+                                        <li>Broken Glass (safety risk)</li>
+                                        <li>Light Bulbs</li>
+                                        <li>Mirrors</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="clean-tip"><strong>Prep:</strong> Rinse cans and jars. Labels are usually okay to
+                                leave on.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-Waste & Special Items -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="icon">💻</span> E-Waste & Special
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="material-details">
+                            <div class="good-bad">
+                                <div class="good">
+                                    <h4><span class="tick">✔</span> Special Drop-off</h4>
+                                    <ul>
+                                        <li>Batteries</li>
+                                        <li>Old Phones/Laptops</li>
+                                        <li>Printer Cartridges</li>
+                                    </ul>
+                                </div>
+                                <div class="bad">
+                                    <h4><span class="cross">✘</span> Note</h4>
+                                    <ul>
+                                        <li>Do NOT put in regular bin!</li>
+                                        <li>Fire hazard in trucks.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="clean-tip"><strong>Prep:</strong> Tape battery terminals. Wipe formatting from
+                                devices. Find a local e-waste center.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 3: Interactive Recycling Quiz -->
+    <section id="quiz" class="quiz-section">
+        <div class="container">
+            <h2 class="section-title">Test Your Recycling IQ</h2>
+            <div id="quiz-container" class="quiz-card">
+                <!-- Quiz dynamically injected here -->
+                <div id="start-quiz-view">
+                    <p>Think you’re an expert? Take our quick 5-question challenge!</p>
+                    <button id="start-quiz-btn" class="cta-button">Start Quiz</button>
+                </div>
+                <div id="question-view" class="hidden">
+                    <div class="progress-bar">
+                        <div id="progress-fill"></div>
+                    </div>
+                    <h3 id="question-text">Question goes here?</h3>
+                    <div id="options-container" class="options-grid"></div>
+                    <p id="feedback-text" class="hidden"></p>
+                </div>
+                <div id="result-view" class="hidden">
+                    <h3 id="result-title">Review</h3>
+                    <p id="result-score">You scored X/5</p>
+                    <p id="result-message">Motivational message</p>
+                    <button id="restart-quiz-btn" class="secondary-btn">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 4: Smart "Search by Item" Tool -->
+    <section id="search" class="search-section">
+        <div class="container">
+            <h2 class="section-title">How Do I Recycle This?</h2>
+
+            <div class="search-wrapper">
+                <input type="text" id="item-search"
+                    placeholder="Type an item (e.g., milk carton, battery, pizza box)..."
+                    aria-label="Search for an item">
+                <div id="search-results" class="search-results hidden"></div>
+            </div>
+
+            <div id="search-highlight" class="search-highlight hidden">
+                <div class="highlight-card">
+                    <span id="highlight-icon" class="highlight-icon">♻️</span>
+                    <h3 id="highlight-name">Item Name</h3>
+                    <p id="highlight-status" class="status-badge">Recyclable</p>
+                    <p id="highlight-instruction">Instructions go here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 4.5: Recycling Center Locator -->
+    <section id="locator" class="locator-section">
+        <div class="container">
+            <h2 class="section-title">Find a Recycling Center</h2>
+            <p class="section-subtitle">Locate the nearest drop-off point anywhere in India.</p>
+
+            <div class="locator-container">
+                <div class="locator-options">
+                    <div class="locator-card">
+                        <span class="locator-icon">📍</span>
+                        <h3>Use My Location</h3>
+                        <p>Find centers near you right now.</p>
+                        <button id="find-near-me-btn" class="cta-button">Find Near Me</button>
+                    </div>
+
+                    <div class="locator-divider">OR</div>
+
+                    <div class="locator-card">
+                        <span class="locator-icon">🏙️</span>
+                        <h3>Search by City</h3>
+                        <p>Enter your city name below.</p>
+                        <div class="city-search-box">
+                            <input type="text" id="city-input" placeholder="e.g., Mumbai, Delhi, Bangalore"
+                                aria-label="City Name">
+                            <button id="city-search-btn" class="secondary-btn">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="partners-grid">
+                    <h4>Top National Recycling Partners</h4>
+                    <div class="partner-logos">
+                        <span class="partner-tag">Karo Sambhav</span>
+                        <span class="partner-tag">Saahas Zero Waste</span>
+                        <span class="partner-tag">Recykal</span>
+                        <span class="partner-tag">Chintan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 5: Environmental Impact Counter -->
+    <section id="impact" class="impact-counter-section">
+        <div class="container">
+            <h2 class="section-title">Your Actions Matter</h2>
+            <p class="section-subtitle">One home. One habit. Big change.</p>
+
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="17">0</div>
+                    <div class="stat-label">Trees Saved per Ton of Paper</div>
+                    <span class="stat-icon">🌳</span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="95">0</div>
+                    <div class="stat-label">% Energy Saved (Aluminum)</div>
+                    <span class="stat-icon">⚡</span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Years for Plastic to Decompose</div>
+                    <span class="stat-icon">⏳</span>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="1000">0</div>
+                    <div class="stat-label">Liters of Water Conserved</div>
+                    <span class="stat-icon">💧</span>
+                </div>
+            </div>
+
+            <div class="fact-carousel">
+                <p>“Recycling just one aluminum can saves enough energy to run a TV for 3 hours.”</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>RecycleRight</h3>
+                <p>Free • Simple • Mobile-First</p>
+            </div>
+            <div class="footer-links">
+                <h4>Mission</h4>
+                <p>Empowering everyone to turn waste into worth through simple education and action.</p>
+            </div>
+            <div class="footer-contact">
+                <a href="mailto:hello@recycleright.org">hello@recycleright.org</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RecycleRight. Built by Team 3 of STEM Workshop.</p>
+        </div>
+    </footer>
+
+    <!-- EcoBuddy Chatbot Widget -->
+    <div id="ecobuddy-widget" class="chat-widget">
+        <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Open Chat">
+            <span class="chat-icon">💬</span>
+        </button>
+
+        <div id="chat-window" class="chat-window hidden">
+            <div class="chat-header">
+                <div class="header-info">
+                    <span class="bot-avatar">🤖</span>
+                    <h3>EcoBuddy</h3>
+                </div>
+                <button id="close-chat-btn" class="close-chat-btn" aria-label="Close Chat">×</button>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <!-- Messages checked dynamically -->
+                <div class="message bot-message">
+                    Hi! I'm EcoBuddy. Ask me anything about recycling! 🌿
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type a message..." aria-label="Type your message">
+                <button id="send-btn" class="send-btn" aria-label="Send">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
