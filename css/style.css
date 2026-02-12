@@ -12,11 +12,11 @@
     --color-white: #FFFFFF;
     --color-error: #e53935;
     --color-success: #43A047;
-    
+
     --font-main: 'Outfit', sans-serif;
-    
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
     --radius-md: 12px;
     --radius-lg: 20px;
 }
@@ -103,7 +103,8 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0; /* Override container padding */
+    padding: 0;
+    /* Override container padding */
 }
 
 .logo {
@@ -262,27 +263,40 @@ ul {
     margin-bottom: 1rem;
 }
 
-.good h4, .bad h4 {
+.good h4,
+.bad h4 {
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
 }
 
-.tick { color: var(--color-success); }
-.cross { color: var(--color-error); }
+.tick {
+    color: var(--color-success);
+}
 
-.good ul, .bad ul {
+.cross {
+    color: var(--color-error);
+}
+
+.good ul,
+.bad ul {
     font-size: 0.9rem;
     color: var(--color-text-light);
 }
 
-.good ul li, .bad ul li {
+.good ul li,
+.bad ul li {
     margin-bottom: 0.3rem;
     padding-left: 0.5rem;
     border-left: 2px solid #ddd;
 }
 
-.good ul li { border-left-color: var(--color-success); }
-.bad ul li { border-left-color: var(--color-error); }
+.good ul li {
+    border-left-color: var(--color-success);
+}
+
+.bad ul li {
+    border-left-color: var(--color-error);
+}
 
 .clean-tip {
     font-size: 0.9rem;
@@ -433,7 +447,8 @@ ul {
 }
 
 .highlight-card {
-    background: white; /* Or light color */
+    background: white;
+    /* Or light color */
     border: 2px solid var(--color-leaf-light);
     border-radius: var(--radius-lg);
     padding: 2rem;
@@ -517,7 +532,7 @@ ul {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 1rem;
     font-size: 0.8rem;
     color: #888;
@@ -525,14 +540,29 @@ ul {
 
 /* --- Animations --- */
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 112, 67, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 112, 67, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 112, 67, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 112, 67, 0);
+    }
 }
 
 .pulse-animation {
@@ -541,11 +571,308 @@ ul {
 
 /* Mobile Tweaks */
 @media (min-width: 768px) {
-    .hero-content h1 { font-size: 4rem; }
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+
     .footer-content {
         flex-direction: row;
         justify-content: space-between;
         text-align: left;
     }
-    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* --- EcoBuddy Chatbot Widget --- */
+.chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    font-family: var(--font-main);
+}
+
+.chat-toggle-btn {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-forest);
+    color: white;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.chat-toggle-btn:hover {
+    transform: scale(1.1);
+    background-color: #1b5e20;
+}
+
+.chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    transform-origin: bottom right;
+}
+
+.chat-window.hidden {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Chat Header */
+.chat-header {
+    background: var(--color-forest);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.bot-avatar {
+    font-size: 1.5rem;
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.close-chat-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.close-chat-btn:hover {
+    opacity: 1;
+}
+
+/* Chat Messages */
+.chat-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.message {
+    max-width: 80%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background: white;
+    color: var(--color-text);
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    border: 1px solid #eee;
+}
+
+.user-message {
+    background: var(--color-forest);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+/* Chat Input */
+.chat-input-area {
+    padding: 1rem;
+    background: white;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 0.5rem;
+}
+
+#chat-input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#chat-input:focus {
+    border-color: var(--color-forest);
+}
+
+.send-btn {
+    background: var(--color-forest);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.send-btn:hover {
+    background: #1b5e20;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .chat-window {
+        width: 90vw;
+        right: -10px;
+        /* Center relative to button */
+        height: 70vh;
+    }
+}
+
+/* --- Locator Section --- */
+.locator-section {
+    padding: 3rem 0;
+    background: var(--color-leaf-light);
+    text-align: center;
+}
+
+.locator-container {
+    max-width: 800px;
+    margin: 2rem auto 0;
+}
+
+.locator-options {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+
+.locator-card {
+    flex: 1;
+    min-width: 250px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.locator-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.locator-card h3 {
+    font-size: 1.2rem;
+    color: var(--color-forest);
+}
+
+.locator-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+}
+
+.locator-divider {
+    font-weight: 700;
+    color: var(--color-text-light);
+    opacity: 0.5;
+}
+
+.city-search-box {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.city-search-box input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.partners-grid {
+    margin-top: 2rem;
+}
+
+.partners-grid h4 {
+    margin-bottom: 1rem;
+    color: var(--color-text-light);
+    font-weight: 600;
+}
+
+.partner-logos {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.partner-tag {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    color: var(--color-forest);
+    border: 1px solid var(--color-leaf);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .locator-options {
+        flex-direction: column;
+    }
+
+    .locator-divider {
+        margin: 1rem 0;
+    }
 }

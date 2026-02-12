@@ -247,6 +247,48 @@
         </div>
     </section>
 
+    <!-- Feature 4.5: Recycling Center Locator -->
+    <section id="locator" class="locator-section">
+        <div class="container">
+            <h2 class="section-title">Find a Recycling Center</h2>
+            <p class="section-subtitle">Locate the nearest drop-off point anywhere in India.</p>
+
+            <div class="locator-container">
+                <div class="locator-options">
+                    <div class="locator-card">
+                        <span class="locator-icon">📍</span>
+                        <h3>Use My Location</h3>
+                        <p>Find centers near you right now.</p>
+                        <button id="find-near-me-btn" class="cta-button">Find Near Me</button>
+                    </div>
+
+                    <div class="locator-divider">OR</div>
+
+                    <div class="locator-card">
+                        <span class="locator-icon">🏙️</span>
+                        <h3>Search by City</h3>
+                        <p>Enter your city name below.</p>
+                        <div class="city-search-box">
+                            <input type="text" id="city-input" placeholder="e.g., Mumbai, Delhi, Bangalore"
+                                aria-label="City Name">
+                            <button id="city-search-btn" class="secondary-btn">Search</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="partners-grid">
+                    <h4>Top National Recycling Partners</h4>
+                    <div class="partner-logos">
+                        <span class="partner-tag">Karo Sambhav</span>
+                        <span class="partner-tag">Saahas Zero Waste</span>
+                        <span class="partner-tag">Recykal</span>
+                        <span class="partner-tag">Chintan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Feature 5: Environmental Impact Counter -->
     <section id="impact" class="impact-counter-section">
         <div class="container">
@@ -301,6 +343,33 @@
             <p>&copy; 2026 RecycleRight. Built by Team 3 of STEM Workshop.</p>
         </div>
     </footer>
+
+    <!-- EcoBuddy Chatbot Widget -->
+    <div id="ecobuddy-widget" class="chat-widget">
+        <button id="chat-toggle-btn" class="chat-toggle-btn" aria-label="Open Chat">
+            <span class="chat-icon">💬</span>
+        </button>
+
+        <div id="chat-window" class="chat-window hidden">
+            <div class="chat-header">
+                <div class="header-info">
+                    <span class="bot-avatar">🤖</span>
+                    <h3>EcoBuddy</h3>
+                </div>
+                <button id="close-chat-btn" class="close-chat-btn" aria-label="Close Chat">×</button>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <!-- Messages checked dynamically -->
+                <div class="message bot-message">
+                    Hi! I'm EcoBuddy. Ask me anything about recycling! 🌿
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type a message..." aria-label="Type your message">
+                <button id="send-btn" class="send-btn" aria-label="Send">➤</button>
+            </div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

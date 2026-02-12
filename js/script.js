@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- 1. ACCORDION LOGIC ---
     const accordions = document.querySelectorAll('.accordion-header');
 
@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
         acc.addEventListener('click', () => {
             const item = acc.parentElement;
             const content = acc.nextElementSibling;
-            
+
             // Toggle current
             item.classList.toggle('active');
-            
+
             if (item.classList.contains('active')) {
                 content.style.maxHeight = content.scrollHeight + 'px';
             } else {
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         questionText.textContent = q.question;
         feedbackText.classList.add('hidden');
         feedbackText.textContent = "";
-        
+
         // Update Progress
         const progress = ((currentQuestionIndex) / quizData.length) * 100;
         progressFill.style.width = `${progress}%`;
@@ -142,12 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function showResult() {
         questionView.classList.add('hidden');
         resultView.classList.remove('hidden');
-        
+
         const resultScore = document.getElementById('result-score');
         const resultMessage = document.getElementById('result-message');
-        
+
         resultScore.textContent = `You scored ${score} out of ${quizData.length}`;
-        
+
         if (score === 5) {
             resultMessage.textContent = "🏆 You’re a Recycling Champion! Amazing functionality knowledge.";
         } else if (score >= 3) {
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
         resultsContainer.innerHTML = '';
-        
+
         if (query.length < 2) {
             resultsContainer.classList.add('hidden');
             return;
@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const target = +counter.getAttribute('data-target');
                 const duration = 2000; // 2 seconds
                 const increment = target / (duration / 16); // 60fps
-                
+
                 let current = 0;
                 const updateCounter = () => {
                     current += increment;
@@ -262,5 +262,144 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
 
     statsObserver.observe(statsSection);
+
+    // --- 5. ECOBUDDY CHATBOT LOGIC ---
+    const chatWidget = document.getElementById('ecobuddy-widget');
+    const chatToggleBtn = document.getElementById('chat-toggle-btn');
+    const chatWindow = document.getElementById('chat-window');
+    const closeChatBtn = document.getElementById('close-chat-btn');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const chatMessages = document.getElementById('chat-messages');
+
+    // Toggle Chat Window
+    function toggleChat() {
+        chatWindow.classList.toggle('hidden');
+        if (!chatWindow.classList.contains('hidden')) {
+            setTimeout(() => chatInput.focus(), 300); // Auto focus input
+        }
+    }
+
+    chatToggleBtn.addEventListener('click', toggleChat);
+    closeChatBtn.addEventListener('click', toggleChat);
+
+    // Send Message Logic
+    function handleUserMessage() {
+        const message = chatInput.value.trim();
+        if (message === "") return;
+
+        // Add User Message
+        addMessage(message, 'user');
+        chatInput.value = '';
+
+        // Simulate Bot Thinking & Response
+        setTimeout(() => {
+            const response = generateResponse(message);
+            addMessage(response, 'bot');
+        }, 600);
+    }
+
+    function addMessage(text, sender) {
+        const div = document.createElement('div');
+        div.classList.add('message', `${sender}-message`);
+        div.textContent = text;
+        chatMessages.appendChild(div);
+
+        // Scroll to bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    sendBtn.addEventListener('click', handleUserMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleUserMessage();
+    });
+
+    // Bot Intelligence (Rule-based)
+    function generateResponse(input) {
+        const lowerInput = input.toLowerCase();
+
+        // 1. Greetings / Small Talk
+        if (lowerInput.match(/^(hi|hello|hey|greetings)/)) {
+            return "Hello there! 👋 ask me about any item to recycle!";
+        }
+        if (lowerInput.includes("thank")) {
+            return "You're welcome! Thanks for recycling! 🌍";
+        }
+        if (lowerInput.includes("who are you") || lowerInput.includes("name")) {
+            return "I'm EcoBuddy, your virtual recycling assistant.";
+        }
+        if (lowerInput.includes("bye")) {
+            return "Goodbye! Keep it green! 💚";
+        }
+
+        // 2. Check Database (Reuse existing 'database' array)
+        const foundItem = database.find(item => lowerInput.includes(item.name.toLowerCase()));
+
+        if (foundItem) {
+            let action = foundItem.type === 'recycle' ? "Yes, recycle it! ✅" :
+                foundItem.type === 'trash' ? "No, that's trash. 🗑️" :
+                    "Special disposal needed. ⚠️";
+            return `${action} ${foundItem.msg}`;
+        }
+
+        // 3. Fallback General Keywords
+        if (lowerInput.includes("plastic")) return "Most clear plastics with #1 or #2 are recyclable. Rinse them first!";
+        if (lowerInput.includes("paper")) return "Clean paper is great! But dirty or handled paper goes in the trash.";
+        if (lowerInput.includes("glass")) return "Glass jars and bottles are infinitely recyclable. Please rinse them.";
+        if (lowerInput.includes("battery") || lowerInput.includes("batteries")) return "Never put batteries in the bin! They cause fires. Find a drop-off location.";
+        if (lowerInput.includes("food")) return "Food waste usually can't be recycled (unless you compost). Rinse containers before recycling.";
+
+        // 4. Unknown
+        return "I'm not sure about that one yet. Try asking about a specific material like 'milk carton' or 'batteries'.";
+    }
+
+    // --- 6. RECYCLING CENTER LOCATOR ---
+    const nearbyBtn = document.getElementById('find-near-me-btn');
+    const cityInput = document.getElementById('city-input');
+    const cityBtn = document.getElementById('city-search-btn');
+
+    if (nearbyBtn) {
+        // Find Near Me
+        nearbyBtn.addEventListener('click', () => {
+            if (navigator.geolocation) {
+                const originalText = nearbyBtn.textContent;
+                nearbyBtn.textContent = "Locating... ⏳";
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const long = position.coords.longitude;
+                        nearbyBtn.textContent = "Found! Opening Map... 🗺️";
+                        setTimeout(() => {
+                            window.open(`https://www.google.com/maps/search/recycling+center/@${lat},${long},13z`, '_blank');
+                            nearbyBtn.textContent = originalText;
+                        }, 1000);
+                    },
+                    (error) => {
+                        alert("Unable to retrieve your location. Please use the City Search instead.");
+                        nearbyBtn.textContent = originalText;
+                    }
+                );
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        });
+    }
+
+    if (cityBtn && cityInput) {
+        // Search By City
+        function searchCity() {
+            const city = cityInput.value.trim();
+            if (city) {
+                window.open(`https://www.google.com/maps/search/recycling+center+in+${city}`, '_blank');
+            } else {
+                alert("Please enter a city name.");
+            }
+        }
+
+        cityBtn.addEventListener('click', searchCity);
+        cityInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchCity();
+        });
+    }
 
 });
